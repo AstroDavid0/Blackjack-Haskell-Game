@@ -2,7 +2,7 @@
 This is a Blackjack game made in haskell
 
 
-##Instructions
+## Instructions
 To run this game you need to have a compiler like ghci(Linux).In order to run the code, type ghci plus the name of the file. 
 ```
 ghci lambda.hs 
@@ -15,7 +15,7 @@ main
 
 Play the game and have fun
 
-##Notes
+## Notes
 * Most of the code is in english but there are some parts in spanish
 * All the commentaries are in spanish
 * I am open to any modification that can improve the game
