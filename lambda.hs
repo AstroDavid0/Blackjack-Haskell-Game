@@ -92,7 +92,7 @@ valornumeric :: Value -> Int
 valornumeric (Numeric i) = i
 ----------------------------------------------------------------
 
--------------------Muestra en valor de una mano con cartas-----
+-------------------Muestra el valor de una mano con cartas-----
 valormano :: Hand -> Int
 valormano (H [])= 0
 valormano (H xs) = sum $ map valuecard xs 
