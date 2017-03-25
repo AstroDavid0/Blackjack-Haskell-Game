@@ -12,7 +12,7 @@ data Player = LambdaJack | You deriving (Show,Eq)
 data Saludo = Bienvenido_A_LambaJack  deriving (Show)
 type Deck = [Card] 
 
---------PARA EJECUTAR EL JUEGO DESPUES DE COMPLICAR : LLAMAR A LA FUNCION   main   PARA INICIAR EL JUEGO-----
+--------PARA EJECUTAR EL JUEGO DESPUES DE COMPILAR : LLAMAR A LA FUNCION   main   PARA INICIAR EL JUEGO-----
 
 ---------------------------------Tamaño de la baraja------------------------
 sizeDeck :: Deck -> Int
@@ -37,8 +37,8 @@ barajarDeck gen m = let (r,g) = randomR (0, sizeDeck m-1) gen
 
 
 
------------------------Maso con las 52 cartas------------------------
---Nota: Las hice a mano, no me queria complicar la vida
+-----------------------Mazo con las 52 cartas------------------------
+
 maso :: [Card]
 maso =[Card (Numeric 2) Clubs,Card (Numeric 3) Clubs,
 	   Card (Numeric 4) Clubs,Card (Numeric 5) Clubs,
@@ -72,7 +72,7 @@ maso =[Card (Numeric 2) Clubs,Card (Numeric 3) Clubs,
 size :: Hand->Int
 size (H xs)  = length xs 
 ---------------------------------------
---Devuelve una mano vacia(Falta probar)
+--Devuelve una mano vacia
 empty :: Hand -> Hand
 empty (H xs )= (H [])
 ----------------------------------------
@@ -97,7 +97,7 @@ valormano :: Hand -> Int
 valormano (H [])= 0
 valormano (H xs) = sum $ map valuecard xs 
 ----------------------------------------------------------------
--------Funcion que muestra True si la mano exede 21 puntos------
+-------Funcion que muestra True si la mano pasa de 21 puntos------
 busted :: Hand -> Bool
 busted (H xs)= if (sum $ map valuecard xs) > 21
 				then True
@@ -191,7 +191,7 @@ mostrarmano (H xs) = do
 
 --------------------------------------------------------------------------------	
 
------Funcion que saca una carta del maso-------------------------------------
+-----Funcion que saca una carta del mazo-------------------------------------
 pedir :: [Card] -> Hand -> Hand
 pedir x (H xs)=(H (xs++[head x]))    
 -----------------------------------------------------------------------------
@@ -225,7 +225,7 @@ recalcula2 :: Hand -> Hand
 recalcula2 (H xs) = H (recalcula xs)
 -----------------------------------------------------------------------------------------------
 
-----Funcion que resive una lista de cartas,verifica si exiten As y los cambia por su menor valor---
+----Funcion que recibe una lista de cartas,verifica si exiten As y los cambia por su menor valor---
 recalcula :: [Card] -> [Card]
 recalcula [] = []
 recalcula (x:xs) = if x == Card Ace Spades
@@ -303,7 +303,7 @@ jugar  ma j l  = do
 main ::  IO () 
 main  = do
 gen <- getStdGen	
-let ma = maso  ------Existen 2 masos.. para cambiar el maso cambie maso por maso2 el cual contiene cartas de tipo Ace para verificar que funciona correctamente los busted
+let ma = maso 
 let mashuffle = barajarDeck gen ma
 let jugador=H[]
 let lamba=H[]
